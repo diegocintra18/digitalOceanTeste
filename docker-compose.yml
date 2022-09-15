@@ -4,7 +4,7 @@ services:
     container_name: travellist-app
     build:
       args:
-        user: sammy
+        user: user
         uid: 1000
       context: ./
       dockerfile: Dockerfile
