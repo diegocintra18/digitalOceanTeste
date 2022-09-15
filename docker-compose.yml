@@ -1,6 +1,7 @@
 version: "3.7"
 services:
   app:
+    container_name: travellist-app
     build:
       args:
         user: sammy
@@ -8,7 +9,6 @@ services:
       context: ./
       dockerfile: Dockerfile
     image: travellist
-    container_name: travellist-app
     restart: unless-stopped
     working_dir: /var/www/
     volumes:
@@ -43,6 +43,13 @@ services:
       - ./docker-compose/nginx:/etc/nginx/conf.d/
     networks:
       - travellist
+
+  # redis
+  redis:
+      container_name: travellist-redis
+      image: redis:latest
+      networks:
+          - travellist
 
 networks:
   travellist:
